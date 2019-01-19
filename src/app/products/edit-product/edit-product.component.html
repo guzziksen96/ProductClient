@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-md-6">
+    <h2 class="text-center">Edit Product</h2>
+    <form [formGroup]="editProductForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input
+          formControlName="name"
+          placeholder="Name"
+          name="name"
+          class="form-control"
+          id="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="cost">Cost:</label>
+        <input
+          formControlName="cost"
+          placeholder="Cost"
+          name="cost"
+          class="form-control"
+          id="cost"
+        />
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <input
+          type="category"
+          formControlName="category"
+          placeholder="Category"
+          name="category"
+          class="form-control"
+          id="category"
+        />
+      </div>
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Cost</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.name }}</td>
+          <td>{{ product.cost }}</td>
+          <td>{{ product.categoryName }}</td>
+          <td>
+            <div
+              class="waves-effect waves-block"
+              (click)="editProduct(product)"
+            >
+              <i class="material-icons">create</i>Edit
+            </div>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteProduct(product)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button
+      type="button"
+      data-toggle="modal"
+      class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right"
+      (click)="addProduct()"
+    >
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+</div>
