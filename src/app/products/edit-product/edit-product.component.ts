@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ProductService } from "src/app/services/product.service";
 import { first } from "rxjs/operators";
+import { CategoryDto } from "src/app/models/category.model";
+import { CategoryService } from "src/app/services/category.service";
 
 @Component({
   selector: "app-edit-product",
@@ -14,12 +16,14 @@ export class EditProductComponent implements OnInit {
   productId: number;
   product: ProductDto;
   editProductForm: FormGroup;
+  categories: CategoryDto[];
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit() {
@@ -31,11 +35,15 @@ export class EditProductComponent implements OnInit {
       id: [],
       name: ["", Validators.required],
       cost: ["", Validators.required],
-      category: ["", Validators.required]
+      categoryId: ["", Validators.required]
     });
 
     this.productService.getById(this.productId).subscribe(data => {
       this.editProductForm.setValue(data);
+    });
+
+    this.categoryService.get().subscribe(data => {
+      this.categories = data;
     });
   }
 

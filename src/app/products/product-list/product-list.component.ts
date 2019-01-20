@@ -10,18 +10,11 @@ import { Router } from "@angular/router";
 })
 export class ProductListComponent implements OnInit {
   products: ProductDto[];
-
   constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit() {
     this.productService.get().subscribe(data => {
       this.products = data;
-    });
-  }
-
-  deleteProduct(product: ProductDto): void {
-    this.productService.delete(product).subscribe(data => {
-      this.products = this.products.filter(u => u !== product);
     });
   }
 
