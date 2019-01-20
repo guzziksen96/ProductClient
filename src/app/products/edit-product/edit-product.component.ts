@@ -39,6 +39,7 @@ export class EditProductComponent implements OnInit {
     });
 
     this.productService.getById(this.productId).subscribe(data => {
+      this.product = data;
       this.editProductForm.setValue(data);
     });
 

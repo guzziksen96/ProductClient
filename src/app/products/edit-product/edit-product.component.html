@@ -32,12 +32,13 @@
       <div class="form-group">
         <label>Category:</label>
         <select
+          [(ngModel)]="product.categoryId"
           class="form-control selcls"
           formControlName="categoryId"
           name="categoryId"
           id="categoryId"
         >
-          <option *ngFor="let category of categories" value="{{ category.id }}">
+          <option *ngFor="let category of categories" [value]="category.id">
             {{ category.name }}
           </option>
         </select>
